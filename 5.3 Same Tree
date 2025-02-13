@@ -1,0 +1,15 @@
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        if not p and not q:  # Both are None
+            return True
+        if not p or not q:  # One is None, but not both
+            return False
+        if p.val != q.val:  # Different values
+            return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)  # Check subtrees
